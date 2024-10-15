@@ -20,6 +20,7 @@
       </style>
 
       <main id="container">
+        <!------------ Step 1 ------------>
         <h1>OAuth2 Test</h1>
         <h4><b>Step 1:</b> Get the OAuth URL</h4>
         <p>Click the button below to get your OAuth URL.</p>
@@ -53,7 +54,7 @@
         const resultElement = document.getElementById("result");
         const resultLink = document.getElementById("authURL");
         // Replace this with your own endpoint
-        const getAuthURL = "https://fotgouqq2g.execute-api.eu-central-1.amazonaws.com/api/get-auth-url";
+        const getAuthURL = "https://huy12rt7z1.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
 
         getAuthUrlButton.onclick = function () {
           fetch(getAuthURL)
@@ -75,10 +76,11 @@
         const codeValue = document.getElementById("code");
         const getAccessToken = document.getElementById("getToken");
         const accessTokenElement = document.getElementById("accessToken");
-        const getToken = "https://fotgouqq2g.execute-api.eu-central-1.amazonaws.com/api/token";
+        const getToken = "https://huy12rt7z1.execute-api.eu-central-1.amazonaws.com/dev/api/token";
 
         getAccessToken.onclick = function ()  {
           let code = codeValue.value;
+          
           // if the auth code not URL-encoded, then URL-encode it.
           if (decodeURIComponent(code) === code) {
             code = encodeURIComponent(codeValue.value);
@@ -95,23 +97,23 @@
         // ------------END OF STEP 2------------
 
         // ------------STEP 3-------------------
-        /* const getEvents = document.getElementById("getEvents");
+        const getEvents = document.getElementById("getEvents");
         const events = document.getElementById("events");
-        const getCalendarEvents = "https://fotgouqq2g.execute-api.eu-central-1.amazonaws.com/api/get-events";
+        const getCalendarEvents = "https://huy12rt7z1.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
         getEvents.onclick = function () {
           const { access_token } = JSON.parse(accessTokenElement.innerText);
           const eventRequest = getCalendarEvents + "/" + access_token;
           fetch(eventRequest)
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (json) {
-            events.innerText = JSON.stringify(json, null, 2);
-          });
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (json) {
+              events.innerText = JSON.stringify(json, null, 2);
+            });
         };
         // ------------END OF STEP 3------------
-*/
+
       </script>
     </body>
 </html>

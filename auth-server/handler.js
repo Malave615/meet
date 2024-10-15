@@ -40,7 +40,7 @@ module.exports.getAuthURL = async () => {
 module.exports.getAccessToken = async (event) => {
 
   // Decode authorization code extracted from URL query
-  const code = decodeURIComponent(`${event.pathParameters?.code}`);
+  const code = decodeURIComponent(`${event.pathParameters.code}`);
   console.log('Authorization Code:', code);
 
   return new Promise((resolve, reject) => {
@@ -73,10 +73,6 @@ module.exports.getAccessToken = async (event) => {
       // Handle error
       return {
         statusCode: 500,
-        headers: {
-          'Access-Control-Allow-Origin': "*", // Required for CORS support to work
-          'Access-Control-Allow-Credentials': true,
-        },
         body: JSON.stringify(error),
       };
     });
