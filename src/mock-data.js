@@ -27,18 +27,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-19T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-05-19T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -66,18 +55,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-20T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-05-20T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -105,18 +83,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-21T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-05-21T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -144,18 +111,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-22T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-05-22T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -183,18 +139,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-23T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-05-23T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -222,18 +167,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-25T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-05-25T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -261,18 +195,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-26T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-05-26T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -300,18 +223,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-27T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-05-27T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -339,18 +251,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-28T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-05-28T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -378,18 +279,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-29T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-05-29T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -417,18 +307,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-05-30T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-05-30T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -456,18 +335,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-01T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-01T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -495,18 +363,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-02T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-06-02T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -534,18 +391,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-03T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-03T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -573,18 +419,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-04T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-06-04T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -612,18 +447,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-05T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-05T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -651,18 +475,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-06T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-06-06T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -690,18 +503,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-08T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-08T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -729,18 +531,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-09T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-06-09T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -768,18 +559,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-10T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-10T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -807,18 +587,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-11T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-06-11T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -846,18 +615,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-12T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-12T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -885,18 +643,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-13T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-06-13T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -924,18 +671,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-15T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-15T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -963,18 +699,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-16T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-06-16T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -1002,18 +727,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-17T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-17T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -1041,18 +755,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-18T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-06-18T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -1080,18 +783,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-19T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-19T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -1119,18 +811,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-20T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-06-20T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -1158,18 +839,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-22T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-22T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -1197,18 +867,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-23T17:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-      "originalStartTime": {
-       "dateTime": "2020-06-23T16:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
       "kind": "calendar#event",
@@ -1236,18 +895,7 @@ const mockData = [
       "end": {
        "dateTime": "2020-06-24T15:00:00+02:00",
        "timeZone": "Europe/Berlin"
-      },
-      "recurringEventId": "3qtd6uscq4tsi6gc7nmmtpqlct",
-      "originalStartTime": {
-       "dateTime": "2020-06-24T14:00:00+02:00",
-       "timeZone": "Europe/Berlin"
-      },
-      "iCalUID": "3qtd6uscq4tsi6gc7nmmtpqlct@google.com",
-      "sequence": 0,
-      "reminders": {
-       "useDefault": true
-      },
-      "eventType": "default"
+      }
      },
      {
         "kind": "calendar#event",
@@ -1275,18 +923,7 @@ const mockData = [
         "end": {
          "dateTime": "2020-06-25T17:00:00+02:00",
          "timeZone": "Europe/Berlin"
-        },
-        "recurringEventId": "4eahs9ghkhrvkld72hogu9ph3e",
-        "originalStartTime": {
-         "dateTime": "2020-06-25T16:00:00+02:00",
-         "timeZone": "Europe/Berlin"
-        },
-        "iCalUID": "4eahs9ghkhrvkld72hogu9ph3e@google.com",
-        "sequence": 0,
-        "reminders": {
-         "useDefault": true
-        },
-        "eventType": "default"
+        }
       }
 ];
 

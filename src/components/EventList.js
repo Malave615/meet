@@ -1,10 +1,10 @@
 // src/components/EventList.js
 
-import Event from './Event';
+import Event from "./Event";
 
 const EventList = ({ events }) => {
     return (
-          <ul data-testid="event-list">
+      <ul data-testid="event-list">
             {events? (
               events.map(event => (
                 <li key={event.id} role="listitem">

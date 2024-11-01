@@ -17,6 +17,6 @@ describe('<App /> component', () => {
 
   test('renders NumberOfEvents', () => {
     render(<App />);
-    expect(screen.getByTestId('number-of-events')).toBeInTheDocument();
+    expect(screen.getByTestId('numberOfEventsInput')).toBeInTheDocument();
   });
 });

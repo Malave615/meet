@@ -13,13 +13,15 @@ const NumberOfEvents = ({ currentNOE, setCurrentNOE, setErrorAlert }) => {
         const value = event.target.value;
         setNumber(value);
 
-        if (isNaN(value) || value <= 0) {
+        const numValue = Number(value); // Convert string to number for validation
+
+        if (isNaN(numValue) || numValue <= 0) {
             setErrorAlert('Please enter a valid number of events');
-        } else if (value > 32) {
+        } else if (numValue > 32) {
             setErrorAlert('Only maximum of 32 is allowed');
         } else {
             setErrorAlert('');
-            setCurrentNOE(value);
+            setCurrentNOE(numValue);
         }
     };
 

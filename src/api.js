@@ -21,5 +21,10 @@ export const extractLocations = (events) => {
  * This function will fetch the list of all events
  */
 export const getEvents = async () => {
-    return mockData;
+  // Simulate an asynchronous API call
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(mockData);
+    }, 100);
+  });
 };
