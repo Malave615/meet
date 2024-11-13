@@ -63,8 +63,6 @@ module.exports.getAccessToken = async (event) => {
         headers: {
           'Access-Control-Allow-Origin': "*", // Required for CORS support to work
           'Access-Control-Allow-Credentials': true,
-          'Access-Control-Allow-Headers': "Content-Type",
-          'Access-Control-Allow-Methods': "OPTIONS, GET, POST",
         },
         body: JSON.stringify(results),
       };
@@ -109,8 +107,6 @@ module.exports.getCalendarEvents = async (event) => {
         headers: {
           'Access-Control-Allow-Origin': "*", // Required for CORS support to work
           'Access-Control-Allow-Credentials': true,
-          'Access-Control-Allow-Headers': "Content-Type",
-          'Access-Control-Allow-Methods': "OPTIONS, GET, POST",
         },
         body: JSON.stringify({ events: results.data.items }),
       };
