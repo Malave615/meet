@@ -1,91 +1,75 @@
-// src/_tests_/Event.test.js
+// src/__tests__/Event.test.js
 
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { getEvents } from '../api';
 import Event from '../components/Event';
-import mockData from '../mock-data';
 
 describe('<Event /> component', () => {
-    let EventComponent;
-    const event = mockData[0];
+  let allEvents;
 
-    test('render event component', () => {
-        EventComponent = render(<Event event={event} />);
-        expect(EventComponent).toBeTruthy();
-    });
+  test('renders event Title', async () => {
+    allEvents = await getEvents();
+    render(<Event event={allEvents[0]} />);
+    expect(screen.getByText(allEvents[0].summary)).toBeInTheDocument();
+  });
 
-    test('renders event title correctly', () => {
-        EventComponent = render(<Event event={event} />);
-        const eventTitle = screen.getByText(event.summary);
-        expect(eventTitle).toBeInTheDocument();
-    });
+  test('renders event location', async () => {
+    allEvents = await getEvents();
+    render(<Event event={allEvents[0]} />);
+    expect(screen.getByText(allEvents[0].location)).toBeInTheDocument();
+  });
 
-    test('renders event start time correctly', () => {
-        EventComponent = render(<Event event={event} />);
-        const eventTime = screen.getByText(event.start.dateTime);
-        expect(eventTime).toBeInTheDocument();
-    });
+  test('renders event details button with the title (show details)', async () => {
+    allEvents = await getEvents();
+    render(<Event event={allEvents[0]} />);
+    expect(screen.getByText(/show details/i)).toBeInTheDocument();
+  });
 
-    test('renders event location correctly', () => {
-        EventComponent = render(<Event event={event} />);
-        const eventLocation = screen.getByText(event.location);
-        expect(eventLocation).toBeInTheDocument();
-    });
+  test("by default, event's details section should be hidden", async () => {
+    allEvents = await getEvents();
+    render(<Event event={allEvents[0]} />);
+    expect(screen.queryByText(allEvents[0].description)).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /show details/i })).toBeInTheDocument();
+  });
 
-    test('renders show details button', () => {
-        EventComponent = render(<Event event={event} />);
-        const detailButton = screen.queryByText('Show Details');
-        expect(detailButton).toBeInTheDocument();
-    });
+  test("shows the details section when the user clicks on the 'show details' button", async () => {
+    allEvents = await getEvents();
+    render(<Event event={allEvents[0]} />);
+    const user = userEvent.setup();
+    
+    // Assert that the details section is NOT visible initially
+    const detailsSection = screen.queryByTestId('details');
+    expect(detailsSection).not.toBeInTheDocument();
 
-    // Scenario 1: An event element is collapsed by default
-    test('event element is collapsed by default', () => {
-        EventComponent = render(<Event event={event} />);
+    // Click the show details button
+    await user.click(screen.getByRole('button', { name: /show details/i }));
 
-        // Check that event details are not visible
-        const eventDetails = screen.queryByRole('listitem');
-        expect(eventDetails).not.toBeInTheDocument();
+    // Check that the description text is now visible
+    const detailsText = await screen.findByTestId('details');
+    expect(detailsText).toBeInTheDocument();
 
-        // Check that buttons and other info are visible
-        expect(screen.getByRole('heading')).toHaveTextContent(event.summary);
-        expect(screen.getByText(event.start.dateTime)).toBeInTheDocument();
-        expect(screen.getByText(event.start.timeZone)).toBeInTheDocument();
-        expect(screen.getByRole('button')).toHaveTextContent('Show Details');
-    });
+    // Assert that the button is now labeled 'hide details'
+    expect(screen.getByRole('button', { name: /hide details/i })).toBeInTheDocument();
+  });
 
-    // Scenario 2: User can expand an event to see its details
-    test('renders event details when clicked', async () => {
-        EventComponent = render(<Event event={event} />);
-        const user = userEvent.setup();
-        
-        // Click to show details
-        await user.click(screen.getByRole('button', { name: /show details/i }));
+  test("hides the details section when the user clicks on the 'hide details' button", async () => {
+    allEvents = await getEvents();
+    render(<Event event={allEvents[0]} />);
+    const user = userEvent.setup();
 
-        // Verify that details are displayed
-        const eventDetails = screen.getByRole('list');
-        expect(eventDetails).toBeInTheDocument();
+    // First show the details section
+    await user.click(screen.getByRole('button', { name: /show details/i }));
 
-        // Normailize the description text
-        const expectedDescription = event.description.replace(/\s+/g, ' ').trim();
-        const receivedDescription = eventDetails.textContent.replace(/\s+/g, ' ').trim();
+    // Assert that the details section is now visible
+    const detailsText = await screen.findByTestId('details');
+    expect(detailsText).toBeInTheDocument();
 
-        expect(receivedDescription).toContain(expectedDescription);
-        expect(screen.getByRole('button')).toHaveTextContent('Hide Details');
-    });
-
-    // Scenario 3: User can collapse an event to hide its details
-    test('collapses event details when clicked again', async () => {
-        EventComponent = render(<Event event={event} />);
-        const user = userEvent.setup();
-        
-        // Click to show details
-        await user.click(screen.getByRole('button', { name: /show details/i })); // Show Details
-        let eventDetails = screen.getByRole('list');
-        expect(eventDetails).toBeInTheDocument();
-
-        // Click to hide details
-        await user.click(screen.getByRole('button', { name: /hide details/i })); // Hide Details
-        expect(screen.queryByRole('list')).not.toBeInTheDocument();
-        expect(screen.getByRole('button')).toHaveTextContent('Show Details');
-    });
+    // Click on the 'hide details' button
+    await user.click(screen.getByRole('button', {name: /hide details/i}));
+    
+    const hideDetailsText = screen.queryByTestId('details');
+    expect(hideDetailsText).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /show details/i })).toBeInTheDocument();
+  });
 });

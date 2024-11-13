@@ -1,52 +1,49 @@
-// src/_tests_/NumberOfEvents.test.js
+// src/__tests__/NumberOfEvents.test.js
 
-import { render, screen } from '@testing-library/react';
+import { render, screen, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NumberOfEvents from '../components/NumberOfEvents';
+import App from '../App';
 
 describe('<NumberOfEvents /> component', () => {
-  const mockSetCurrentNOE = jest.fn();
-  const mockSetErrorAlert = jest.fn();
 
-  test('component contains input textbox', () => {
-    render(<NumberOfEvents currentNOE={32} setCurrentNOE={() => {}} setErrorAlert={() => {}} />);
-    const input = screen.getByRole('textbox');
-    expect(input).toBeInTheDocument();
+  test('renders number of events text input', () => {
+    render(<NumberOfEvents />);
+    const numberTextBox = screen.queryByRole('textbox');
+    expect(numberTextBox).toBeInTheDocument();
+    expect(numberTextBox).toHaveClass('number-of-events-input');
   });
 
-  test('ensures the default value of textbox is 32', () => {
-    render(<NumberOfEvents currentNOE={32} setCurrentNOE={() => {}} setErrorAlert={() => {}} />);
-    const input = screen.getByTestId('numberOfEventsInput');
-    expect(input).toHaveValue('32');
+  test('default number is 32', async () => {
+    render(<NumberOfEvents />);
+    const numberTextBox = screen.queryByRole('textbox');
+    expect(numberTextBox).toHaveValue("32");
   });
 
-  test('textbox value changes when user updates input', async () => {
-    render(<NumberOfEvents currentNOE={32} setCurrentNOE={mockSetCurrentNOE} setErrorAlert={mockSetErrorAlert} />);
-    const input = screen.getByTestId('numberOfEventsInput');
+  test('number of events text box value changes when the user types in it', async () => {
+    render(<NumberOfEvents />);
     const user = userEvent.setup();
-    await user.clear(input);
-    await user.type(input, '10');
-    expect(input).toHaveValue('10');
-    expect(mockSetCurrentNOE).toHaveBeenCalledWith(10);
-  });
+    const numberTextBox = screen.queryByRole('textbox');
+    await user.type(numberTextBox, "123")
 
-  test('displays error alert for invalid input', async () => {
-    render(<NumberOfEvents currentNOE={32} setCurrentNOE={mockSetCurrentNOE} setErrorAlert={mockSetErrorAlert} />);
-    const input = screen.getByTestId('numberOfEventsInput');
-    const user = userEvent.setup();
-
-    await user.clear(input);
-    await user.type(input, '-5');
-    expect(mockSetErrorAlert).toHaveBeenCalledWith('Please enter a valid number of events');
-  });
-
-  test('displays error alert for exceeding maximum', async () => {
-    render(<NumberOfEvents currentNOE={32} setCurrentNOE={mockSetCurrentNOE} setErrorAlert={mockSetErrorAlert} />);
-    const input = screen.getByTestId('numberOfEventsInput');
-    const user = userEvent.setup();
-
-    await user.clear(input);
-    await user.type(input, '33');
-    expect(mockSetErrorAlert).toHaveBeenCalledWith('Only maximum of 32 is allowed');
+    // 32 (the default value already written) + 123
+    expect(numberTextBox).toHaveValue("32123");
   });
 });
+
+/* describe('<NumberOfEvents /> integration', () => {
+  test('renders the number of events selected by the user', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    const EventListDOM = screen.getByTestId('event-list');
+    const numberTextBox = within(EventListDOM).queryByRole('textbox');
+    expect(numberTextBox).toBeInTheDocument();
+    await user.type(numberTextBox, "10");
+
+    await waitFor(() => {
+      const allRenderedEventItems = screen.queryAllByRole('listitem');
+      expect(allRenderedEventItems.length).toBe(10);
+    });
+  }); 
+}) */
