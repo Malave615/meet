@@ -12,16 +12,6 @@ provider:
     CLIENT_ID: ${file(config.json):CLIENT_ID}
     CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
     CALENDAR_ID: ${file(config.json):CALENDAR_ID}
-  httpApi:
-    cors:
-      allowedOrigins:
-        - "*"
-      allowedHeaders:
-        - Content-Type
-      allowedMethods:
-        - GET
-        - OPTIONS
-
 functions:
   getAuthURL:
     handler: handler.getAuthURL
@@ -36,7 +26,6 @@ functions:
       - http:
           path: api/token/{code}
           method: get
-          cors: true
 
   getCalendarEvents:
     handler: handler.getCalendarEvents
@@ -44,4 +33,3 @@ functions:
       - http:
           path: api/get-events/{access_token}
           method: get
-          cors: true
