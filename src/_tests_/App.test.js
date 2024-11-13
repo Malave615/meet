@@ -44,7 +44,9 @@ describe('<App /> integration', () => {
       event => event.location === 'Berlin, Germany'
     );
 
-    expect(allRenderedEventItems.length).toBe(berlinEvents.length);
+    await waitFor(() => {
+      expect(allRenderedEventItems.length).toBe(berlinEvents.length);
+    });
 
     allRenderedEventItems.forEach(event => {
       expect(event.textContent).toContain("Berlin, Germany");
@@ -52,7 +54,7 @@ describe('<App /> integration', () => {
 
   });
 
-  /* test('renders a list of events matching the number selected by the user', async () => {
+  test('renders a list of events matching the number selected by the user', async () => {
     const user = userEvent.setup();
     render(<App />);
 
@@ -99,5 +101,5 @@ describe('<App /> integration', () => {
     allRenderedEventItems.forEach(event => {
       expect(event.textContent).toContain("Berlin, Germany");
     });
-  }); */
+  });
 });
