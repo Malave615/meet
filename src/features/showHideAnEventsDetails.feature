@@ -15,3 +15,16 @@ Feature: Show/Hide event details
         When the user sees the details of an event
         And the user clicks on the event again
         Then the user should see the collapsed event element for that event
+
+    Scenario: Multiple events can be expanded and collapsed independently
+        Given the main page is open
+        When the user sees the list of upcoming events
+        And the user expands the first event
+        And the user expands the second event
+        Then both events should be expanded with their details visible
+
+    Scenario: Event details load asynchronously
+        Given the main page is open with events that load details asynchronously
+        When the user clicks on an event
+        Then the event details should be shown after a delay
+
