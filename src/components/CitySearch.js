@@ -30,6 +30,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
 
   return (
     <div data-testid="city-search">
+      <title>Meet App</title>
       <input
         type="text"
         className="city"
