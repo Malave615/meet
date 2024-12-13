@@ -1,8 +1,9 @@
 // src/components/NumberOfEvents.js
 
 import { useState, useEffect } from "react";
+import { ErrorAlert } from "./Alert";
 
-const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
+const NumberOfEvents = ({ currentNOE, setCurrentNOE, errorAlert, setErrorAlert }) => {
 
   const [number, setNumber] = useState(currentNOE);
 
@@ -14,6 +15,15 @@ const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
     const value = event.target.value;
     setNumber(value);
     setCurrentNOE(value);
+
+    let errorText = "";
+    if (value <= 0) {
+      errorText = "Only positive numbers are allowed.";
+    } else {
+      errorText = "";
+    }
+
+    setErrorAlert(errorText);
   }
 
   return (

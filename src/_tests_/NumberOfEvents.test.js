@@ -8,20 +8,20 @@ import App from '../App';
 describe('<NumberOfEvents /> component', () => {
 
   test('renders number of events text input', () => {
-    render(<NumberOfEvents currentNOE={32} setCurrentNOE={() => {}} />);
+    render(<NumberOfEvents currentNOE={32} setCurrentNOE={() => {}} errorAlert={() => {}} setErrorAlert={() =>{}} />);
     const numberTextBox = screen.queryByRole('spinbutton');
     expect(numberTextBox).toBeInTheDocument();
     expect(numberTextBox).toHaveClass('number-of-events-input');
   });
   
   test('default number is 32', async () => {
-    render(<NumberOfEvents currentNOE={32} setCurrentNOE={() => {}} />);
+    render(<NumberOfEvents currentNOE={32} setCurrentNOE={() => {}} errorAlert={() => {}} setErrorAlert={() =>{}} />);
     const numberTextBox = screen.queryByRole('spinbutton');
     expect(numberTextBox).toHaveValue(32);
   });
 
   test('number of events text box value changes when the user types in it', async () => {
-    render(<NumberOfEvents currentNOE={32} setCurrentNOE={() => {}} />);
+    render(<NumberOfEvents currentNOE={32} setCurrentNOE={() => {}} errorAlert={() => {}} setErrorAlert={() =>{}} />);
     const user = userEvent.setup();
     const numberTextBox = screen.queryByRole('spinbutton');
 
