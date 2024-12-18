@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration.js';
 import reportWebVitals from './reportWebVitals';
 
-import * as atatus from 'atatus-spa';
-atatus.config('7885bfe40d7c4d90b0cae01389a2b6a6').install();
+// import * as atatus from 'atatus-spa';
+// atatus.config('7885bfe40d7c4d90b0cae01389a2b6a6').install();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +18,7 @@ root.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
+
 serviceWorkerRegistration.register();
 
 // If you want to start measuring performance in your app, pass a function
