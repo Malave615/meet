@@ -25,7 +25,7 @@ precacheAndRoute(self.__WB_MANIFEST);
 // are fulfilled with your index.html shell. Learn more at
 // https://developers.google.com/web/fundamentals/architecture/app-shell
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
-const handler = createHandlerBoundToURL('/index.html');
+// const handler = createHandlerBoundToURL('/index.html');
 
 registerRoute(
   ({ request, url }) => {
@@ -34,7 +34,7 @@ registerRoute(
     if (url.pathname.match(fileExtensionRegexp)) return false;
     return true;
   },
-  handler
+  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
 );
 
 // An example runtime caching route for requests that aren't handled by the
