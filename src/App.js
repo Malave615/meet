@@ -6,6 +6,7 @@ import NumberOfEvents from './components/NumberOfEvents';
 import { useEffect, useState } from 'react';
 import { extractLocations, getEvents } from './api';
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
+import CityEventsChart from './components/CityEventsChart';
 
 import './App.css';
 
@@ -20,33 +21,50 @@ const App = () => {
 
   useEffect(() => {
     if ( navigator.onLine) {
+      fetchData();
       // User is online, clear any warning messages
       setWarningAlert("");
     } else {
       // User is offline, set a warning message
       setWarningAlert("You are currently offline. Some features may not be available.");
+      const storedEvents = JSON.parse(localStorage.getItem('events'));
+      setEvents(storedEvents);
     }
-    fetchData();
   }, [currentCity, currentNOE]);
 
   const fetchData = async () => {
-    const allEvents = await getEvents();
-    const filteredEvents = currentCity === "See all cities" ?
-      allEvents :
-      allEvents.filter(event => event.location === currentCity)
-    setEvents(filteredEvents.slice(0, currentNOE));
-    setAllLocations(extractLocations(allEvents));
-  }
+    if (navigator.onLine) {
+      try {
+        const allEvents = await getEvents();
+        const filteredEvents = currentCity === "See all cities" ? allEvents : allEvents.filter(event => event.location === currentCity);
+        setEvents(filteredEvents.slice(0, currentNOE));
+        setAllLocations(extractLocations(allEvents));
+
+        // Save to localStorage
+        localStorage.setItem("lastEvents", JSON.stringify(allEvents));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setErrorAlert("An error occurred while fetching data. Please try again later.");
+      }
+    } else {
+      // Offline: Retrieve data from localStorage
+      const storedEvents = JSON.parse(localStorage.getItem('events')) || [];
+      const filteredEvents = currentCity === "See all cities" ? storedEvents : storedEvents.filter(event => event.location === currentCity);
+      setEvents(filteredEvents.slice(0, currentNOE));
+      setAllLocations(extractLocations(storedEvents));
+    }
+  };
 
   return (
     <div className="App">
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert}/> : null}
-        {errorAlert && <ErrorAlert text={errorAlert} />}
-        {warningAlert && <WarningAlert text={warningAlert} />}
+        {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
+        {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
       </div>
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setInfoAlert={setInfoAlert} />
       <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} errorAlert={errorAlert} setErrorAlert={setErrorAlert} />
+      <CityEventsChart allLocations={allLocations} events={events} />
       <EventList events={events} />
     </div>
   );

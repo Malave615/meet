@@ -29,11 +29,11 @@ describe('<App /> integration', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    const CitySearchDOM = screen.getByTestId('city-search');
-    const CitySearchInput = within(CitySearchDOM).queryByRole('textbox');
+    const CitySearchDOM2 = screen.getByTestId('city-search');
+    const CitySearchInput2 = within(CitySearchDOM2).queryByRole('textbox');
+    await user.type(CitySearchInput2, "Berlin");
 
-    await user.type(CitySearchInput, "Berlin");
-    const berlinSuggestionItem = within(CitySearchDOM).queryByText('Berlin, Germany');
+    const berlinSuggestionItem = within(CitySearchDOM2).queryByText('Berlin, Germany');
     await user.click(berlinSuggestionItem);
 
     const EventListDOM = screen.getByTestId('event-list');
@@ -78,10 +78,11 @@ describe('<App /> integration', () => {
     render(<App />);
 
     // First, simulate selecting the city "Berlin"
-    const CitySearchDOM = screen.getByTestId('city-search');
-    const CitySearchInput = within(CitySearchDOM).queryByRole('textbox');
+    const SecondCitySearchDOM = screen.getByTestId('city-search');
+    const CitySearchInput = within(SecondCitySearchDOM).queryByRole('textbox');
     await user.type(CitySearchInput, "Berlin");
-    const berlinSuggestionItem = within(CitySearchDOM).queryByText('Berlin, Germany');
+
+    const berlinSuggestionItem = within(SecondCitySearchDOM).queryByText('Berlin, Germany');
     await user.click(berlinSuggestionItem);
 
     // Then, set the number of events to 5
@@ -100,6 +101,64 @@ describe('<App /> integration', () => {
 
     allRenderedEventItems.forEach(event => {
       expect(event.textContent).toContain("Berlin, Germany");
+    });
+  });
+});
+
+// Test for Offline behavior
+describe('<App /> offline behavior without global navigator', () => {
+
+  test('handles offline behavior when fetching events', async () => {
+    const mockEvents = [
+      { id: 1, name: 'Event 1', location: 'Berlin, Germany' },
+      { id: 2, name: 'Event 2', location: 'Berlin, Germany' }
+    ];
+
+    // Clear existing localStorage and store mockEvents
+    localStorage.clear();
+    localStorage.setItem('events', JSON.stringify(mockEvents));
+
+    // Simulate network failure by removing the fetch logic for the event request
+    global.fetch = jest.fn(() =>
+      Promise.reject(new Error('Network error'))
+    );
+
+    // Step 1: Render the App component
+    render(<App />);
+
+    // Step 2: Find all city-search elements (if there are multiple)
+    const citySearchElements = screen.getAllByTestId('city-search');
+
+    // If there are multiple, select the first one
+    const CitySearchDOM = citySearchElements[0];
+    const CitySearchInput = within(CitySearchDOM).queryByRole('textbox');
+
+    // Simulate user typing in the input
+    const user = userEvent.setup();
+    await user.type(CitySearchInput, "Berlin");
+
+    // Simulate selecting Berlin from the suggestions
+    const berlinSuggestionItem = within(CitySearchDOM).queryByText('Berlin, Germany');
+    await user.click(berlinSuggestionItem);
+
+
+    // Step 3: Simulate fetching events (which should fail) and check localStorage
+    await waitFor(() => {
+      const EventListDOM = screen.getByTestId('event-list');
+      const eventItems = within(EventListDOM).queryAllByRole('listitem');
+
+      // Test if the correct number of events are rendered
+      expect(eventItems.length).toBe(mockEvents.length);
+    });
+
+    // Step 4: Check that the events contain the expected location (Berlin, Germany)
+    await waitFor(() => {
+      const EventListDOM = screen.getByTestId('event-list');
+      const eventItems = within(EventListDOM).queryAllByRole('listitem');
+
+      eventItems.forEach(event => {
+        expect(event.textContent).toContain("Berlin, Germany");
+      });
     });
   });
 });

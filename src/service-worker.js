@@ -11,7 +11,7 @@ import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate } from 'workbox-strategies';
+import { StaleWhileRevalidate, NetworkFirst } from 'workbox-strategies';
 
 clientsClaim();
 
@@ -28,15 +28,20 @@ const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
 // const handler = createHandlerBoundToURL('/index.html');
 
 registerRoute(
-  ({ request, url }) => {
-    if (request.mode !== 'navigate') return false;
-    if (url.pathname.startsWith('/_')) return false;
-    if (url.pathname.match(fileExtensionRegexp)) return false;
-    return true;
-  },
-  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
+  // Match API requests
+  ({ url }) => url.origin === self.location.origin && url.pathname.startsWith('/api/'),
+  new NetworkFirst({
+    cacheName: 'api-cache',
+    plugins: [
+      new ExpirationPlugin({ 
+        maxEntries: 50,
+        maxAgeSeconds: 60 * 60 * 24,
+      }),
+    ],
+  })
 );
 
+// Cache images with StaleWhileRevalidate strategy
 // An example runtime caching route for requests that aren't handled by the
 // precache, in this case same-origin .png requests like those from in public/
 registerRoute(
@@ -52,7 +57,18 @@ registerRoute(
   })
 );
 
-// This allows the web app to trigger skipWaiting via
+// Provide a fallback to index.html for navigation requests.
+registerRoute(
+  ({ request, url }) => {
+    if (request.mode !== 'navigate') return false;
+    if (url.pathname.startsWith('/_')) return false;
+    if (url.pathname.match(fileExtensionRegexp)) return false;
+    return true;
+  },
+  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
+);
+
+// Listen for message events to handle skipWaiting and immediate update
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
@@ -60,4 +76,25 @@ self.addEventListener('message', (event) => {
   }
 });
 
-// Any other custom service worker logic can go here.
+// Handle network fluctuation by providing a fallback response when network is unavailable
+self.addEventListener('fetch', (event) => {
+  if (event.request.url.includes('/api/')) {
+    // Try to fetch the newtwork first, but if it fails, use the cache
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          // Cache the API response for offline use
+          if (response.ok) {
+            const clonedResponse = response.clone();
+            caches.open('api-cache').then((cache) => {
+              cache.put(event.request, clonedResponse);
+            })
+          }
+          return response;
+        })
+        .catch(() => {
+          return caches.match(event.request);
+        })
+    );
+  }
+});
