@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { extractLocations, getEvents } from './api';
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
 import CityEventsChart from './components/CityEventsChart';
+import EventGenresChart from './components/EventGenresChart';
 
 import './App.css';
 
@@ -41,7 +42,7 @@ const App = () => {
         setAllLocations(extractLocations(allEvents));
 
         // Save to localStorage
-        localStorage.setItem("lastEvents", JSON.stringify(allEvents));
+        localStorage.setItem("events", JSON.stringify(allEvents));
       } catch (error) {
         console.error('Error fetching data:', error);
         setErrorAlert("An error occurred while fetching data. Please try again later.");
@@ -49,9 +50,13 @@ const App = () => {
     } else {
       // Offline: Retrieve data from localStorage
       const storedEvents = JSON.parse(localStorage.getItem('events')) || [];
-      const filteredEvents = currentCity === "See all cities" ? storedEvents : storedEvents.filter(event => event.location === currentCity);
-      setEvents(filteredEvents.slice(0, currentNOE));
-      setAllLocations(extractLocations(storedEvents));
+      if (storedEvents.length > 0) {
+        const filteredEvents = currentCity === "See all cities" ? storedEvents : storedEvents.filter(event => event.location === currentCity);
+        setEvents(filteredEvents.slice(0, currentNOE));
+        setAllLocations(extractLocations(storedEvents));
+      } else {
+        setErrorAlert("No events available in localStorage.");
+      }
     }
   };
 
@@ -64,7 +69,10 @@ const App = () => {
       </div>
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setInfoAlert={setInfoAlert} />
       <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} errorAlert={errorAlert} setErrorAlert={setErrorAlert} />
-      <CityEventsChart allLocations={allLocations} events={events} />
+      <div className="charts-container">
+        <CityEventsChart allLocations={allLocations} events={events} />
+        <EventGenresChart events={events} />
+      </div>
       <EventList events={events} />
     </div>
   );
