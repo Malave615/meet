@@ -13,7 +13,7 @@ const EventGenresChart = ({ events }) => {
     const getData = () => {
         const data = genres.map((genre) => {
             const filteredEvents = events.filter((event) => 
-                event.summary.includes(genre)
+                event.summary && event.summary.includes(genre)
             );
             return {
                 name: genre,
