@@ -33,7 +33,7 @@ const CityEventsChart = ({ allLocations, events }) => {
                 city === 'Bangkok' ? '#44AA99' : '#000000';
 
             return { city, count, color };
-        })
+        });
         return data;
     };
 
@@ -52,12 +52,19 @@ const CityEventsChart = ({ allLocations, events }) => {
               type="category" dataKey="city" name="City"
               angle={60} interval={0} tick={{ dx: 20, dy: 40, fontSize: 14 }}
             />
-            <YAxis type="number" dataKey="count" name="Number of events" tickFormatter={(value) => Math.round(value)} />
+            <YAxis type="number" dataKey="count" name="Number of events" tickFormatter={(value) => Math.round(value)} domain={['auto', 'auto']} />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-            <Scatter name="A school" data={data} fill={(entry) => entry.color} />
+            {data.map((entry, index) => (
+                <Scatter 
+                  key={index}
+                  name={entry.city}
+                  data={[entry]}
+                  fill={entry.color}
+                />
+            ))}            
           </ScatterChart>
         </ResponsiveContainer>
     );
-}
+};
 
 export default CityEventsChart;
