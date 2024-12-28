@@ -32,7 +32,7 @@ const CityEventsChart = ({ allLocations, events }) => {
                 city === 'California' ? '#AA4499' :
                 city === 'Bangkok' ? '#44AA99' : '#000000';
 
-            return { city, count };
+            return { city, count, color };
         })
         return data;
     };
