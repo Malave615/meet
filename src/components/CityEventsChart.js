@@ -37,6 +37,9 @@ const CityEventsChart = ({ allLocations, events }) => {
         return data;
     };
 
+    const uniqueCounts = [...new Set(data.map((item) => item.count))];
+    uniqueCounts.sort((a, b) => a - b);
+
     return (
         <ResponsiveContainer width="99%" height={400}>
           <ScatterChart
@@ -61,7 +64,7 @@ const CityEventsChart = ({ allLocations, events }) => {
               dataKey="count"
               name="Number of events"
               tickFormatter={(value) => Math.round(value)}
-              ticks={[0, 1, 2, 3, 4, 5]}
+              ticks={uniqueCounts}
               domain={[0, 'auto']}
             />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
