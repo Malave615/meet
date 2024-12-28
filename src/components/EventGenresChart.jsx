@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 
 const EventGenresChart = ({ events }) => {
     const [data, setData] = useState([]);
@@ -36,7 +36,7 @@ const EventGenresChart = ({ events }) => {
         ) : null;
     };
 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const COLORS = ['#12436D',' #28A197', '#801650', '#F46A25', '#A285D1'];
   
     return (
       <ResponsiveContainer width="99%" height={400}>
@@ -53,6 +53,7 @@ const EventGenresChart = ({ events }) => {
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
+          <Legend verticalAlign="bottom" height={36}/>
         </PieChart>
       </ResponsiveContainer>
     );
