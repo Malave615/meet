@@ -61,13 +61,14 @@ const CityEventsChart = ({ allLocations, events }) => {
               dataKey="count"
               name="Number of events"
               tickFormatter={(value) => Math.round(value)}
-              domain={['auto', 'auto']}
+              ticks={[0, 1, 2, 3, 4, 5]}
+              domain={[0, 'auto']}
             />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
             <Scatter 
                 name="Events by City"
                 data={data}
-                fill="color"
+                fill={(entry) => entry.color}
             />            
           </ScatterChart>
         </ResponsiveContainer>
