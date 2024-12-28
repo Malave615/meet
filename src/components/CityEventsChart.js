@@ -14,6 +14,24 @@ const CityEventsChart = ({ allLocations, events }) => {
         const data = allLocations.map((location) => {
             const count = events.filter((event) => event.location === location).length
             const city = location.split((/, | - /))[0]
+
+            const color = 
+                city === 'New York' ? '#12436D' : 
+                city === 'Amsterdam' ? '#28A197' :
+                city === 'Dubai' ? '#801650' :
+                city === 'Toronto' ? '#F46A25' :
+                city === 'Santiago' ? '#A285D1' :
+                city === 'Tokyo' ? '#117733' :
+                city === 'Berlin' ? '#332288' :
+                city === 'Cape Town' ? '#AA4499' :
+                city === 'Nairobi' ? '#6699CC' :
+                city === 'Sydney NSW' ? '#DDCC77' :
+                city === 'Mumbai' ? '#661100' :
+                city === 'London' ? '#CC6677' :
+                city === 'Moscow' ? '#882255' :
+                city === 'California' ? '#AA4499' :
+                city === 'Bangkok' ? '#44AA99' : '#000000';
+
             return { city, count };
         })
         return data;
@@ -34,10 +52,9 @@ const CityEventsChart = ({ allLocations, events }) => {
               type="category" dataKey="city" name="City"
               angle={60} interval={0} tick={{ dx: 20, dy: 40, fontSize: 14 }}
             />
-            <YAxis type="number" dataKey="count" name="Number of events" />
+            <YAxis type="number" dataKey="count" name="Number of events" tickFormatter={(value) => Math.round(value)} />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-            <Scatter name="A school" data={data} fill="#4269D0" />
-            <Scatter name="B school" data={data} fill="#EFB118" />
+            <Scatter name="A school" data={data} fill={(entry) => entry.color} />
           </ScatterChart>
         </ResponsiveContainer>
     );
