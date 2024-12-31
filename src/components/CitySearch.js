@@ -39,35 +39,45 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     setInfoAlert("")
   };
 
+  // Get the input's bouding rectangle for positioning the suggestions dropdown
+  const inputPosition = inputRef.current ? inputRef.current.getBoundingClientRect() : null;
+
   return (
     <div data-testid="city-search" className="city-search-container">
       <h1>Meet App</h1>
-      <input
-        ref={inputRef}
-        type="text"
-        className="city"
-        placeholder="Search for a city"
-        value={query}
-        onFocus={() => setShowSuggestions(true)}
-        onChange={handleInputChanged}
-      />
-      {showSuggestions && suggestions.length > 0 && (
-        <ul 
-          className="suggestions"
-          style={{ 
-            top: inputRef.current ? `${inputRef.current.getBoundingClientRect().bottom}px` : "45px",
-            left: inputRef.current ? `${inputRef.current.getBoundingClientRect().left}px` : "0px", // Dynamically set left based on input position
-            width: inputRef.current ? `${inputRef.current.offsetWidth}px` : "100%", // Dynamically set width to match input width
-        }}
-        >
-          {suggestions.map((suggestion) => (
-            <li onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
-          ))}
-          <li key='See all cities' onClick={handleItemClicked}>
-            <b>See all cities</b>
-          </li>
-        </ul>
-      )}
+
+      <div data-testid="cities-selector" className="cities-selector">
+        <input
+          ref={inputRef}
+          type="text"
+          className="city"
+          placeholder="Search for a city"
+          value={query}
+          onFocus={() => setShowSuggestions(true)}
+          onChange={handleInputChanged}
+        />
+
+        {/* Suggestions dropdown */}
+        {showSuggestions && suggestions.length > 0 && inputPosition && (
+          <ul 
+            className="suggestions"
+            style={{ 
+              position: 'fixed',
+              top: `${inputPosition.bottom + window.scrollY}px`, // Position dropdown below input,
+              left: `${inputPosition.left + window.scrollX}px`, // Align to the left of the input,
+              width: `${inputPosition.width}px`, // Make the width of the dropdown the same as the input
+              transform: 'translateY(5px)',
+            }}
+          >
+            {suggestions.map((suggestion) => (
+              <li onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
+            ))}
+            <li key='See all cities' onClick={handleItemClicked}>
+              <b>See all cities</b>
+            </li>
+          </ul>
+        )}
+      </div>
     </div>
   );
 };

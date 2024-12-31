@@ -1,6 +1,14 @@
 
 .city-search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cities-selector {
     position: relative;
+    width: 100%;
+    max-width: 400px;
 }
 
 .city {
@@ -18,14 +26,12 @@
 
 .suggestions {
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
     background-color: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     max-height: 200px;
     overflow-y: auto;
     z-index: 100;
+    width: 100%;
     box-sizing: border-box;
 }
 
