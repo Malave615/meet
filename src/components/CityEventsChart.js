@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-const CityEventsChart = ({ allLocations, events }) => {
+const CityEventsChart = ({ allLocations, events, color }) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
         setData(getData());
-    }, [allLocations, events]);
+    }, [allLocations, events, color]);
 
     const getData = () => {
         const data = allLocations.map((location) => {

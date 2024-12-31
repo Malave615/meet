@@ -16,6 +16,7 @@ const App = () => {
   const [currentCity, setCurrentCity] = useState("See all cities");
   const [events, setEvents] = useState([]);
   const [currentNOE, setCurrentNOE] = useState(32);
+  const color = useState([]);
   const [infoAlert, setInfoAlert] = useState("");
   const [errorAlert, setErrorAlert] = useState("");
   const [warningAlert, setWarningAlert] = useState("");
@@ -70,7 +71,7 @@ const App = () => {
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setInfoAlert={setInfoAlert} />
       <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} errorAlert={errorAlert} setErrorAlert={setErrorAlert} />
       <div className="charts-container">
-        <CityEventsChart allLocations={allLocations} events={events} />
+        <CityEventsChart allLocations={allLocations} events={events} color={color} />
         <EventGenresChart events={events} />
       </div>
       <EventList events={events} />
