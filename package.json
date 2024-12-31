@@ -62,7 +62,7 @@
     "@testing-library/react": "^16.0.1",
     "gh-pages": "^6.1.1",
     "jest-cucumber": "^4.5.0",
-    "jest-puppeteer": "^10.1.4",
+    "jest-puppeteer": "^11.0.0",
     "puppeteer": "^23.11.1"
   }
 }
