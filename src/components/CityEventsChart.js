@@ -65,7 +65,7 @@ const CityEventsChart = ({ allLocations, events, color }) => {
               name="Number of events"
               tickFormatter={(value) => Math.round(value)}
               ticks={uniqueCounts}
-              domain={[0, 'auto']}
+              domain={[Math.min(...uniqueCounts) - 1, Math.max(...uniqueCounts) + 1]}
               allowDataOverflow={true}
             />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
