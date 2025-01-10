@@ -65,7 +65,6 @@
     "eslint-config-react-app": "^7.0.1",
     "gh-pages": "^6.1.1",
     "jest-cucumber": "^4.5.0",
-    "jest-puppeteer": "^11.0.0",
-    "puppeteer": "^23.11.1"
+    "jest-puppeteer": "^11.0.0"
   }
 }
