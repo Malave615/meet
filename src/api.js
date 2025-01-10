@@ -2,6 +2,7 @@
 
 import mockData from './mock-data';
 import NProgress from 'nprogress';
+import moment from 'moment';
 
 /**
  * 
@@ -66,8 +67,15 @@ export const getEvents = async () => {
     const result = await response.json();
     if (result) {
       NProgress.done();
-      localStorage.setItem("lastEvents", JSON.stringify(result.events));
-      return result.events;
+
+      // Format each event's date
+      const formattedEvents = result.events.map(event => ({
+        ...event,
+        formattedDate: moment(event.date).format('MMMM Do YYYY, h:mm a')
+      }));
+
+      localStorage.setItem("lastEvents", JSON.stringify(formattedEvents));
+      return formattedEvents;
     } else return null;
   }
 };
