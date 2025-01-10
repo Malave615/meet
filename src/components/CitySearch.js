@@ -39,7 +39,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
   };
 
   return (
-    <div data-testid="city-search">
+    <div data-testid="city-search" className="city-search-container">
       <h1>Meet App</h1>
       <input
         type="text"
